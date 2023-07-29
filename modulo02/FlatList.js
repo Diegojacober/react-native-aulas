@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import Pessoa from './src/Pessoas';
 
 export default function App() {
 
@@ -34,26 +35,4 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 35,
     },
-
-    areaPessoa: {
-        backgroundColor: '#222',
-        height: 200,
-        marginBottom: 15,
-    },
-
-    textoPessoa: {
-        color: '#FFF',
-        fontSize: 18,
-    },
-
 });
-
-function Pessoa({ data }) {
-    return(
-        <View style={styles.areaPessoa}>
-            <Text style={styles.textoPessoa}>Nome: { data.nome }</Text>
-            <Text style={styles.textoPessoa}>Email: { data.email }</Text>
-            <Text style={styles.textoPessoa}>Idade: { data.idade }</Text>
-        </View>
-    )
-}
