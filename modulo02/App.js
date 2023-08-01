@@ -1,85 +1,87 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Switch, Button } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import Slider from '@react-native-community/slider';
 import { useState } from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native';
+import Lista from './src/Components/Lista';
 
 export default function App() {
 
-    const [name, setName] = useState()
-    const [idade, setIdade] = useState()
-    const [sexo, setSexo] = useState(1)
-    const [limit, setLimit] = useState(0)
-    const [student, setStudent] = useState(false)
-
-    // let sexos = [
-    //     { sigla: 'M', desc: 'Masculino' },
-    //     { sigla: 'F', desc: 'Feminino' },
-    // ]
-
-    const save = () => {
-        alert(`${name}, ${idade}, ${limit}, ${student}`)
-    }
+    const [feed, setFeed] = useState([
+        {
+            id: '1',
+            nome: 'Lucas Silva',
+            descricao: 'Mais um dia de muitos bugs :)',
+            imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
+            imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',
+            likeada: false,
+            likers: 0
+        },
+        {
+            id: '2',
+            nome: 'Matheus',
+            descricao: 'Isso sim é ser raiz!!!!!',
+            imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png',
+            imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto2.png',
+            likeada: false,
+            likers: 0
+        },
+        {
+            id: '3',
+            nome: 'Jose Augusto',
+            descricao: 'Bora trabalhar Haha',
+            imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil3.png',
+            imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto3.png',
+            likeada: false,
+            likers: 3
+        },
+        {
+            id: '4',
+            nome: 'Gustavo Henrique',
+            descricao: 'Isso sim que é TI!',
+            imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
+            imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto4.png',
+            likeada: false,
+            likers: 1
+        },
+        {
+            id: '5',
+            nome: 'Guilherme',
+            descricao: 'Boa tarde galera do insta...',
+            imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png',
+            imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto5.png',
+            likeada: false,
+            likers: 32
+        }
+    ]
+    )
 
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <TextInput
-                style={styles.input}
-                onChangeText={setName}
-                value={name}
-                placeholder="Your name"
-                keyboardType="default"
-            />
 
-            <TextInput
-                style={styles.input}
-                onChangeText={setIdade}
-                value={idade}
-                placeholder="Your age"
-                keyboardType="number-pad"
-                maxLength={3}
-            />
-
-            {/* <View style={styles.div}>
-            <Text>Sexo: {sexo}</Text>
-            <Picker
-                selectedValue={sexo}
-                onValueChange={(itemValue, itemIndex) => setSexo(itemValue)}
-            >
-                
-            <Picker.item value="1" label="M - Masculino" />
-            {/* <Picker.item key={2} value={2} label="F - Feminino" /> */}
-
-            {/* </Picker> */}
-            {/* </View>  */}
+            <View style={styles.header}>
+                <TouchableOpacity>
+                    <Image
+                        source={require('./src/img/logo.png')}
+                        style={styles.logo}
+                    />
+                </TouchableOpacity>
 
 
-            <Slider
-                style={styles.slider}
-                minimumValue={0}
-                maximumValue={10000}
-                onValueChange={(valorSelecionado) => setLimit(valorSelecionado)}
-                value={limit}
-            />
-
-            <Text>{limit.toLocaleString('pt-br', {
-                style: 'currency',
-                currency: 'BRL',
-            })}</Text>
-
-
-            <View style={styles.div}>
-            <Text>Estudante</Text>
-            <Switch
-                value={student}
-                onValueChange={(value) => setStudent(value)}
-                thumbColor={'darkblue'}
-            />
+                <TouchableOpacity>
+                    <Image
+                        source={require('./src/img/send.png')}
+                        style={styles.send}
+                    />
+                </TouchableOpacity>
             </View>
 
-            <Button title='Abrir Conta' color={'#000'} onPress={save}/>
-
+            <FlatList
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
+                data={feed}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => <Lista data={item} />}
+            />
         </View>
     );
 }
@@ -87,28 +89,29 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        padding: 5,
+        paddingTop: 30,
     },
 
-    input: {
-        borderColor: 'darkblue',
-        borderBottomWidth: 1,
-        width: 250,
-        marginBottom: 20,
-    },
-
-    slider: {
-        width: 300,
-    },
-
-    div: {
+    header: {
+        height: 55,
+        backgroundColor: "#FFF",
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 20,
-        width: 300,
+        padding: 5,
+        borderBottomWidth: 0.2,
+        shadowColor: '#000',
+        elevation: 1,
+    },
+
+    logo: {
+
+    },
+
+    send: {
+        width: 23,
+        height: 23,
     },
 
 });
