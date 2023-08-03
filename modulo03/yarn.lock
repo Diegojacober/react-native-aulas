@@ -1172,6 +1172,11 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
+"@everapi/freecurrencyapi-js@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@everapi/freecurrencyapi-js/-/freecurrencyapi-js-1.0.1.tgz#efdb8371a612c86b1ea69fba58efe6a8eb838bd1"
+  integrity sha512-GusI6Fdu4gEZhEyOOZKf9KOnSp3Atb3zLUQIp0X569LphBEv0IrZF2CALmbTmut4DacqqlP2zOpeS96bkAt2yQ==
+
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-4.0.0.tgz#be0c1de943c7987a9fbd309ea0b1acd605890c7b"
