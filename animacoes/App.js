@@ -7,18 +7,63 @@ export default function App() {
 
   const [LarguraAnimada, setLarAnimada] = useState(new Animated.Value(150))
   const [AlturaAnimada, setAltAnimada] = useState(new Animated.Value(50))
+  const [OpacidadeAnimada, setOpaAnimada] = useState(new Animated.Value(1))
 
-  Animated.timing(
-    LarguraAnimada, {
-      toValue: 300,
-      duration: 2000, //milisegundos
-      useNativeDriver: false,
-    }
-  ).start()
+  //Animação em sequência
+  // Animated.sequence([
+  //   Animated.timing(
+  //     LarguraAnimada,
+  //     {
+  //       toValue: 300,
+  //       duration: 2000,
+  //       useNativeDriver: false,
+  //     },
+  //   ),
+
+  //   Animated.timing(
+  //     AlturaAnimada,
+  //     {
+  //       toValue: 200,
+  //       duration: 2000,
+  //       useNativeDriver: false,
+  //     },
+  //   ),
+
+  //  Animated.timing(
+  //   OpacidadeAnimada,
+  //   {
+  //     toValue: 0,
+  //     duration: 2000,
+  //     useNativeDriver: false,
+  //   }
+  // ),
+  // ]).start()
+
+  //Animação Paralela
+  Animated.parallel([
+    Animated.timing(
+      LarguraAnimada,
+      {
+        toValue: 300,
+        duration: 2000,
+        useNativeDriver: false,
+      },
+    ),
+
+    Animated.timing(
+      AlturaAnimada,
+      {
+        toValue: 200,
+        duration: 2000,
+        useNativeDriver: false,
+      },
+    ),
+  ]).start()
 
   return (
     <View style={styles.container}>
-      <Animated.View style={{ width: LarguraAnimada, height: AlturaAnimada, backgroundColor: '#4169e1', justifyContent: 'center', }}>
+      <StatusBar style="auto" />
+      <Animated.View style={{ width: LarguraAnimada, height: AlturaAnimada, backgroundColor: '#4169e1', justifyContent: 'center', opacity: OpacidadeAnimada, }}>
         <Text style={{ color: '#FFFF', fontSize: 25, textAlign: 'center' }}>Carregando...</Text>
       </Animated.View>
     </View>
