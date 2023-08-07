@@ -1,11 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'; 
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { useLayoutEffect } from 'react';
 
 export default function Sobre() {
+
+  const route = useRoute()
+  const navigation = useNavigation();
+
+  //useeffect sincrono
+  useLayoutEffect(() => {
+    navigation.setOptions({
+        title: route.params?.nome === '' ? 'Página Sobre' : route.params?.nome
+    })
+  }, [navigation])
+    
   return (
     <View style={styles.container}>
-      <Text>About us Page</Text>
+      <Text>{route.params?.email}</Text>
+      <Text>{route.params?.nome}</Text>
       <AntDesign name="infocirlce" size={24} color="black" />
+      <Button title='Ir para contatos' onPress={() => navigation.navigate('Contato')}/>
+      <Button title='Voltar tela' onPress={() => navigation.goBack()}/>
     </View>
   );
 }

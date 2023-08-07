@@ -11,7 +11,7 @@ export default function Home() {
     <View style={styles.container}>
       <Text>Home Page</Text>
       <Ionicons name="md-checkmark-circle" size={32} color="green" />
-      <Button title='Ir para sobre' onPress={() => navigation.navigate('Sobre')}/>
+      <Button title='Ir para sobre' onPress={() => navigation.navigate('Sobre', { nome: 'Diego', email: 'diego@email.com' })}/>
     </View>
   );
 }
