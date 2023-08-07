@@ -20,8 +20,8 @@ export default function Sobre() {
       <Text>{route.params?.email}</Text>
       <Text>{route.params?.nome}</Text>
       <AntDesign name="infocirlce" size={24} color="black" />
-      <Button title='Ir para contatos' onPress={() => navigation.navigate('Contato')}/>
-      <Button title='Voltar tela' onPress={() => navigation.goBack()}/>
+      {/* <Button title='Ir para contatos' onPress={() => navigation.navigate('Contato')}/>
+      <Button title='Voltar tela' onPress={() => navigation.goBack()}/> */}
     </View>
   );
 }

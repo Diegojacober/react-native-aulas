@@ -5,16 +5,16 @@ import { useNavigation, StackActions } from "@react-navigation/native";
 
 export default function Contato() {
 
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
-    const handleHome = () => {
-        navigation.dispatch(StackActions.popToTop())
-    }
+    // const handleHome = () => {
+    //     navigation.dispatch(StackActions.popToTop())
+    // }
     
     return(
         <View>
             <Text>Contato</Text>
-            <Button title="inicio" onPress={handleHome}/>
+            {/* <Button title="inicio" onPress={handleHome}/> */}
         </View>
     )
 }
