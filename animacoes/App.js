@@ -5,49 +5,43 @@ import { Animated } from 'react-native';
 
 export default function App() {
 
-  const [LarguraAnimada, setLarAnimada] = useState(new Animated.Value(180))
+  const [LarguraAnimada, setLarAnimada] = useState(new Animated.Value(2))
   const [AlturaAnimada, setAltAnimada] = useState(new Animated.Value(60))
   const [OpacidadeAnimada, setOpaAnimada] = useState(new Animated.Value(0))
+  let porcentagemAnimate = LarguraAnimada.interpolate({
+    inputRange: [0, 100],
+    outputRange: ['0%', '100%']
+  })
 
-  const carregarGrafico = () => {
-
+  Animated.loop(
     Animated.sequence([
       Animated.timing(
-        OpacidadeAnimada,
+        LarguraAnimada,
         {
-          toValue: 1,
-          duration: 400,
+          toValue: 100,
+          duration: 2000,
           useNativeDriver: false,
         }
       ),
+
       Animated.timing(
-        AlturaAnimada,
+        LarguraAnimada,
         {
-          toValue: 300,
-          duration: 1000,
+          toValue: 2,
+          duration: 2000,
           useNativeDriver: false,
         }
       ),
-    ]).start()
-
-  }
-
+    ])
+  ).start()
 
   return (
     <View style={styles.container}>
       <StatusBar style='light' backgroundColor='#000'/>
-      <View style={{ height: 80, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: '#4169e1' }}>
-        <TouchableOpacity onPress={carregarGrafico}>
-          <Text style={{ fontSize: 25, color: "#FFF" }}>Gerar Gráfico</Text>
-        </TouchableOpacity>
-      </View>
+      
+      <Animated.View style={{ backgroundColor: "#4169e1", width: porcentagemAnimate, height: 25, }}>
 
-      <View style={{ flex: 1, flexDirection: "column", justifyContent: 'flex-end', alignItems: 'center' }}>
-        <Animated.View style={{ width: LarguraAnimada, height: AlturaAnimada, backgroundColor: '#f00', justifyContent: 'center', opacity: OpacidadeAnimada}}>
-          <Text style={{ color: '#FFFF', fontSize: 25, textAlign: 'center' }}>R$ 150,00</Text>
-        </Animated.View>
-      </View>
-
+      </Animated.View>
 
     </View>
   );
@@ -57,5 +51,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 33,
+    justifyContent: 'center',
+    alignItems: 'start',
   },
 });
