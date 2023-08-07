@@ -7,11 +7,15 @@ export default function Home() {
 
   const navigation = useNavigation();
 
+  function navegaDetalhes() {
+    navigation.navigate('Detalhes')
+  }
+
   return (
     <View style={styles.container}>
       <Text>Home Page</Text>
       <Ionicons name="md-checkmark-circle" size={32} color="green" />
-      <Button title='Ir para sobre' onPress={() => navigation.navigate('Sobre', { nome: 'Diego', email: 'diego@email.com' })}/>
+      <Button title='Ir para detalhes' onPress={() => navegaDetalhes}/>
     </View>
   );
 }
