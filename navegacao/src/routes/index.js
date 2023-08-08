@@ -10,6 +10,7 @@ import Sobre from "../pages/Sobre";
 import Contato from "../pages/Contato";
 import Home from "../pages/Home";
 
+import CustomDrawer from "../components/CustomDrawer";
 
 //Tab:
 // const Tab = createBottomTabNavigator();
@@ -43,7 +44,7 @@ import Home from "../pages/Home";
 //          options={{
 //           tabBarLabel: 'Sobre',
 //           tabBarIcon: ({color, size}) => {
-//             return <AntDesign name="team" size={size} color={color} />
+//             return <AntDesign name="team" size={size} color={colmenuhomeor} />
 //           },
 //         }}
 //         />
@@ -63,13 +64,24 @@ const Drawer = createDrawerNavigator();
 
 export default function Routes() {
   return(
-    <Drawer.Navigator screenOptions={{
+    <Drawer.Navigator 
+    drawerContent={CustomDrawer}
+    screenOptions={{
       headerShown: false,
-      drawerActiveTintColor: '#f456'
+      drawerActiveTintColor: '#f456',
+      drawerStyle: {
+        backgroundColor: '#121212'
+      },
     }}>
       <Drawer.Screen name="HomeStack" component={StackRoutes}
       options={{
         // overlayColor: '#F00',
+        title: 'Homeeee',
+        drawerIcon: ({tintColor}) => {
+          return (
+            <Feather name="home" size={14} color={'#f456'} />
+          )
+        }
 
       }}
       />
