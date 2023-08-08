@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import StackRoutes from "./stackRoutes";
 import Sobre from "../pages/Sobre";
 import Contato from "../pages/Contato";
+import Home from "../pages/Home";
 
 
 const Tab = createBottomTabNavigator();
@@ -28,6 +29,7 @@ export default function Routes() {
         <Tab.Screen name="HomeStack" component={StackRoutes} 
         options={{
           tabBarLabel: 'Inicio',
+          headerShown: false,
           tabBarIcon: ({color, size}) => {
             return <Feather name="home" size={size} color={color} />
           },

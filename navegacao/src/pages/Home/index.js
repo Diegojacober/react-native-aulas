@@ -8,14 +8,14 @@ export default function Home() {
   const navigation = useNavigation();
 
   function navegaDetalhes() {
-    navigation.navigate('Detalhes')
+    navigation.navigate("Detalhes")
   }
 
   return (
     <View style={styles.container}>
       <Text>Home Page</Text>
       <Ionicons name="md-checkmark-circle" size={32} color="green" />
-      <Button title='Ir para detalhes' onPress={() => navegaDetalhes}/>
+      <Button title='Ir para detalhes' onPress={() => navegaDetalhes()}/>
     </View>
   );
 }
