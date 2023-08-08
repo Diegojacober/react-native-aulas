@@ -16,6 +16,7 @@ export default function Home() {
       <Text>Home Page</Text>
       <Ionicons name="md-checkmark-circle" size={32} color="green" />
       <Button title='Ir para detalhes' onPress={() => navegaDetalhes()}/>
+      <Button title='Abrir Drawer' onPress={() => navigation.openDrawer()}/>
     </View>
   );
 }
